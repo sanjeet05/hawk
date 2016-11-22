@@ -19,6 +19,8 @@
     <script src="client/lib/angular.min.js"></script>
     <script src="client/lib/angular-ui-router.min.js"></script>
     <script src="client/lib/ngStorage.min.js"></script>
+    <script src="client/lib/satellizer.min.js"></script>
+
     <script src="client/js/app.js"></script>
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
