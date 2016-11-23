@@ -21,6 +21,10 @@
     <script src="client/lib/ngStorage.min.js"></script>
     <script src="client/lib/satellizer.min.js"></script>
 
+    <script src="client/lib/ui-bootstrap-2.0.1.js"></script>
+    <script src="client/lib/angular-messages.min.js"></script>
+    <script src="client/lib/showErrors.min.js"></script>
+
     <script src="client/js/app.js"></script>
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
