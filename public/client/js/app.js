@@ -5,14 +5,24 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
 
 
 // for title
-.run(['$rootScope', '$state', '$stateParams',
-    function($rootScope, $state, $stateParams) {
+.run(['$rootScope', '$state', '$stateParams', '$auth',
+    function($rootScope, $state, $stateParams, $auth) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
+
+        // for login/logout
+        $rootScope.authentication=$auth;
+        $rootScope.logout=function () {
+          console.log("logout");
+          $auth.logout().then(function () {
+            $state.go('login');
+          });
+        };
     }
 ])
 
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
+
     $stateProvider
         .state('home', {
             url: "/home",
@@ -57,23 +67,9 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     // })
 
 
-    // .state('addContacts', {
-    //     url: "/addContacts",
-    //     templateUrl: "templates/addContacts.html",
-    //     data : { pageTitle: 'Add Contacts' },
-    //     controller: 'addContactsCtrl'
-    // })
-    // .state('editContacts', {
-    //     url: "/editContacts",
-    //     templateUrl: "templates/editContacts.html",
-    //     data : { pageTitle: 'Edit Contacts' },
-    //     controller: 'editContactsCtrl'
-    // })
-
-
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    $authProvider.loginUrl = 'http://localhost:8000/api/v1/login';
+    $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/home');
 });

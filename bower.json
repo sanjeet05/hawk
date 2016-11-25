@@ -1,0 +1,22 @@
+{
+  "name": "hawk",
+  "description": "hawk",
+  "main": "",
+  "authors": [
+    "sanjeet05 <kumarsanjeet1990@gmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "hawk"
+  ],
+  "homepage": "https://github.com/sanjeet05/hawk",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/client/lib",
+    "test",
+    "tests"
+  ]
+}

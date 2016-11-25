@@ -33,7 +33,7 @@
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" >
         <div class="container">
 
             <div class="navbar-header">
@@ -51,8 +51,11 @@
             <!-- /.nevbar header -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <div class="nav navbar-right navbar-btn">
-                    <a ui-sref="login" class="btn btn-default">
+                    <a ui-sref="login" class="btn btn-default" ng-show="!authentication.isAuthenticated()">
                         Login
+                    </a>
+                    <a  class="btn btn-default" ng-click="logout()" ng-show="authentication.isAuthenticated()">
+                        Logout
                     </a>
                 </div>
             </div>
