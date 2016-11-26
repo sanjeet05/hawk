@@ -6,6 +6,11 @@
     "Santu <raj.santu090@gmail.com>"
   ],
   "license": "MIT",
+
+  "license": "MIT",
+  "keywords": [
+    "hawk"
+  ],
   "homepage": "https://github.com/sanjeet05/hawk",
   "private": true,
   "ignore": [
@@ -15,6 +20,7 @@
     "public/client/lib",
     "test",
     "tests"
+
   ],
   "dependencies": {
     "international-phone-number": "^0.0.16"

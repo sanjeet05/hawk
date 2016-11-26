@@ -72,7 +72,5 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');
-    // ipnConfig.defaultCountry = 'in';
-    // ipnConfig.preferredCountries = ['in', 'pl', 'de', 'fr', 'uk', 'es'];
-    // ngIntlTelInputProvider.set({initialCountry: 'in'});
+
 });
