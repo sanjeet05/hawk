@@ -11,11 +11,12 @@
     <!-- Bootstrap -->
     <link href="client/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="client/css/style.css" rel="stylesheet">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<link href="client/lib/intl-tel-input/build/css/intlTelInput.css" rel="stylesheet">
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="client/lib/jquery-3.1.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="client/lib/bootstrap/js/bootstrap.min.js"></script>
-
+   <script src="client/lib/jquery/dist/jqueryjs"></script>
     <script src="client/lib/angular.min.js"></script>
     <script src="client/lib/angular-ui-router.min.js"></script>
     <script src="client/lib/ngStorage.min.js"></script>
@@ -29,11 +30,16 @@
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
 
+    <script src="client/lib/intl-tel-input/build/js/utils.js"></script>
+    <script src="client/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
+
+  <script src="client/lib/international-phone-number/releases/international-phone-number.js"></script>
+<script src="client/lib/ng-intl-tel-input/dist/ng-intl-tel-input.js"></script>
 </head>
 
 <body>
     <!-- navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-fixed-top" >
         <div class="container">
 
             <div class="navbar-header">
@@ -51,8 +57,11 @@
             <!-- /.nevbar header -->
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <div class="nav navbar-right navbar-btn">
-                    <a ui-sref="login" class="btn btn-default">
+                    <a ui-sref="login" class="btn btn-default" ng-show="!authentication.isAuthenticated()">
                         Login
+                    </a>
+                    <a  class="btn btn-default" ng-click="logout()" ng-show="authentication.isAuthenticated()">
+                        Logout
                     </a>
                 </div>
             </div>

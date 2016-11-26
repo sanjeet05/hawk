@@ -22,12 +22,13 @@
           &nbsp; or&nbsp;
           <a ui-sref="signup">Signup</a>
         </div>
-        <div class="text-center forgot-password">
+        <br/>
+        <!-- <div class="text-center forgot-password">
           <a ui-sref="forgot">Forgot your password?</a>
+        </div> -->
+        <div type="danger" ng-show="errorText" class="text-center text-danger">
+          <span ng-bind="errorText"></span>
         </div>
-        <alert type="danger" ng-show="error" class="text-center text-danger">
-          <span ng-bind="error"></span>
-        </alert>
       </fieldset>
     </form>
   </div>

@@ -21,15 +21,19 @@ Route::get('/', function () {
 //   Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 // });
 
+
+// route for generate the token
 Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
+    Route::post('signup', 'LoginController@signup');
+    Route::post('authenticate/login', 'LoginController@login');
 
-    Route::post('register', 'LoginController@register');
-    Route::post('login', 'LoginController@login');
+});
 
+// need to have token
+Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
-    	Route::post('get_user_details', 'LoginController@get_user_details');
+    	Route::get('get_user_details', 'LoginController@get_user_details');
     });
-
 });
 
 // Route::get('/login', 'LoginController@index');
