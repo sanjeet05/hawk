@@ -3,8 +3,10 @@
   "description": "hawk",
   "main": "",
   "authors": [
-    "sanjeet05 <kumarsanjeet1990@gmail.com>"
+    "Santu <raj.santu090@gmail.com>"
   ],
+  "license": "MIT",
+
   "license": "MIT",
   "keywords": [
     "hawk"
@@ -18,5 +20,9 @@
     "public/client/lib",
     "test",
     "tests"
-  ]
+
+  ],
+  "dependencies": {
+    "international-phone-number": "^0.0.16"
+  }
 }

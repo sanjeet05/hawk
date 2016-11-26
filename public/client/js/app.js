@@ -1,7 +1,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'controllers', 'satellizer'])
+angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput'])
 
 
 // for title
@@ -73,4 +73,5 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');
+
 });
