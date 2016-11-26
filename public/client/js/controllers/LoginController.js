@@ -31,6 +31,7 @@ angular.module('LoginController', [])
               }
               else{
                 // $auth.setToken(response.data.result)
+                localStorage.setItem("userName", response.data.user_name); 
                 $state.go('home');
               }
             },
@@ -69,6 +70,6 @@ angular.module('LoginController', [])
                     console.log(error);
                 }
             );
-      };   
+      };
 
     });

@@ -15,6 +15,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         $rootScope.logout=function () {
           console.log("logout");
           $auth.logout().then(function () {
+            localStorage.removeItem("userName");
             $state.go('login');
           });
         };

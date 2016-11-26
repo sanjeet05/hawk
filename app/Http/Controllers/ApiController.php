@@ -8,12 +8,19 @@ use App\Http\Requests;
 
 class ApiController extends DatabaseSaverController
 {
+  /**
+  *  code supposed to be used
+  *  200 -> valid or ok
+  *  401 -> invalid / expired
+  *  403 -> Unauthoraized
+  *  404 -> user not found
+  *  500 -> server error
+  **/
   protected $statusCode = 200;
 
   /**
    * @return mixed
    */
-
   public function getStatusCode()
   {
       return $this->statusCode;
