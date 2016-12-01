@@ -40,39 +40,20 @@ class LoginController extends ApiController
               }
             } catch (JWTException $e) {
                 // something went wrong
-                return response()->json(['result' => 'could_not_create_token'], 500);
+                return response()->json(['result' => 'could_not_create_token'], 400);
             }
             // if no errors are encountered we can return a JWT
             // return response()->json(compact('token'));
             $user_name = $this->getUserNameByEmail($request->get('email'));
-            return response()->json(['token' => $token, 'user_name'=>$user_name]);
-
-      // $input = $request->all();
-      //
-      // if (!$token = JWTAuth::attempt($input)) {
-      //
-      //       return response()->json(['result' => 'wrong email or password.']);
-      //
-      //   }
-      //
-      //     return response()->json(['token' => $token]);
+            $user_role = $this->getUserRoleByEmail($request->get('email'));
+            if($user_role == 1) {
+              return response()->json(['token' => $token, 'user_name'=>$user_name, 'user_role'=>'admin']);
+            }
+            else
+            {
+              return response()->json(['token' => $token, 'user_name'=>$user_name, 'user_role'=>'user']);
+            }
 
     }
-
-
-
-public function get_user_details(Request $request)
-
-{
-
-  // $input = $request->all();
-  //
-  //  $user = JWTAuth::toUser($input['token']);
-  //
-  //   return response()->json(['result' => $user]);
-
-  return response()->json(['result' => true]);
-
-}
 
 }

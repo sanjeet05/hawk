@@ -29,6 +29,7 @@
     <script src="client/js/app.js"></script>
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
+    <script src="client/js/controllers/AdminController.js"></script>
 
     <script src="client/lib/intl-tel-input/build/js/utils.js"></script>
     <script src="client/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
@@ -49,7 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-                <a class="navbar-brand text-uppercase" ui-sref="home">
+                <a class="navbar-brand text-uppercase" href="#">
             Hawk
           </a>
             </div>
@@ -60,7 +61,7 @@
                     <a ui-sref="login" class="btn btn-default" ng-show="!authentication.isAuthenticated()">
                         Login
                     </a>
-                    <a  class="btn btn-default" ng-click="logout()" ng-show="authentication.isAuthenticated()">
+                    <a class="btn btn-default" ng-click="logout()" ng-show="authentication.isAuthenticated()">
                         Logout
                     </a>
                 </div>

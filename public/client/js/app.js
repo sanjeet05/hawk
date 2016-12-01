@@ -1,7 +1,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput'])
+angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput'])
 
 
 // for title
@@ -16,6 +16,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
           console.log("logout");
           $auth.logout().then(function () {
             localStorage.removeItem("userName");
+            localStorage.removeItem("userRole");
             $state.go('login');
           });
         };
@@ -25,14 +26,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
 .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
     $stateProvider
-        .state('home', {
-            url: "/home",
-            templateUrl: "client/templates/home.html",
-            data: {
-                pageTitle: 'Home'
-            },
-            controller: 'HomeCtrl'
-        })
+
         .state('login', {
             url: "/login",
             templateUrl: "client/templates/login.html",
@@ -48,6 +42,22 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
                 pageTitle: 'SignUp'
             },
             controller: 'SignupCtrl'
+        })
+        .state('home', {
+            url: "/home",
+            templateUrl: "client/templates/home.html",
+            data: {
+                pageTitle: 'Home'
+            },
+            controller: 'HomeCtrl'
+        })
+        .state('adminHome', {
+            url: "/adminHome",
+            templateUrl: "client/templates/admin-home.html",
+            data: {
+                pageTitle: 'Admin Home'
+            },
+            controller: 'AdminHomeCtrl'
         })
 
     // if you have menu then routes like that
@@ -72,6 +82,6 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     // route the JWT should be retrieved from
     $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/login');
 
 });

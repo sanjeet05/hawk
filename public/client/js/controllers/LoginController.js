@@ -31,8 +31,15 @@ angular.module('LoginController', [])
               }
               else{
                 // $auth.setToken(response.data.result)
-                localStorage.setItem("userName", response.data.user_name); 
-                $state.go('home');
+                localStorage.setItem("userName", response.data.user_name);
+                localStorage.setItem("userRole", response.data.user_role);
+                if(response.data.user_role === 'admin') {
+                  $state.go('adminHome');
+                }
+                else{
+                  $state.go('home');
+                }
+
               }
             },
             function(error) {
@@ -53,7 +60,7 @@ angular.module('LoginController', [])
           $scope.$broadcast('show-errors-check-validity', 'userForm');
           return false;
         }
-        console.log($scope.credentials);
+        // console.log($scope.credentials);
         $http.post('http://localhost:8000/api/v1/signup', $scope.credentials)
             .then(
                 function(response) {

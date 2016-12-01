@@ -15,7 +15,12 @@ class DatabaseSaverController extends Controller
   }
   // method to return the name of exits user
   public function getUserNameByEmail($email){
-      $user_name = User::where('email',$email)->first();
-      return $user_name['name'];
+      $user_info = User::where('email',$email)->first();
+      return $user_info['name'];
+  }
+  // method to return the user role of exits user
+  public function getUserRoleByEmail($email){
+      $user_info = User::where('email',$email)->first();
+      return $user_info['roleId'];
   }
 }
