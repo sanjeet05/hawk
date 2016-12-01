@@ -11,12 +11,15 @@
     <!-- Bootstrap -->
     <link href="client/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="client/css/style.css" rel="stylesheet">
-<link href="client/lib/intl-tel-input/build/css/intlTelInput.css" rel="stylesheet">
-        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <link href="client/lib/intl-tel-input/build/css/intlTelInput.css" rel="stylesheet">
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="client/lib/jquery-3.1.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="client/lib/bootstrap/js/bootstrap.min.js"></script>
-   <script src="client/lib/jquery/dist/jqueryjs"></script>
+    <!-- <script src="client/lib/jquery/dist/jquery.js"></script> -->
     <script src="client/lib/angular.min.js"></script>
     <script src="client/lib/angular-ui-router.min.js"></script>
     <script src="client/lib/ngStorage.min.js"></script>
@@ -33,41 +36,48 @@
     <script src="client/lib/intl-tel-input/build/js/utils.js"></script>
     <script src="client/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
 
-  <script src="client/lib/international-phone-number/releases/international-phone-number.js"></script>
-<script src="client/lib/ng-intl-tel-input/dist/ng-intl-tel-input.js"></script>
+    <script src="client/lib/international-phone-number/releases/international-phone-number.min.js"></script>
+    <script src="client/lib/ng-intl-tel-input/dist/ng-intl-tel-input.min.js"></script>
+
+
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top" >
-        <div class="container">
+  <nav class="navbar navbar-default navbar-fixed-top">
+ <div class="container-fluid">
 
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-                <a class="navbar-brand text-uppercase" ui-sref="home">
-            Hawk
-          </a>
-            </div>
 
-            <!-- /.nevbar header -->
-            <div class="collapse navbar-collapse" id="navbar-collapse">
-                <div class="nav navbar-right navbar-btn">
-                    <a ui-sref="login" class="btn btn-default" ng-show="!authentication.isAuthenticated()">
-                        Login
-                    </a>
-                    <a  class="btn btn-default" ng-click="logout()" ng-show="authentication.isAuthenticated()">
-                        Logout
-                    </a>
-                </div>
-            </div>
+   <div class="navbar-header">
+     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse"
+         aria-expanded="false">
+         <span class="sr-only">Toggle navigation</span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+     </button>
+     <a class="navbar-brand" href="#">Hawk</a>
+   </div>
 
-        </div>
-    </nav>
+   <div class="collapse navbar-collapse ">
+       <div class="row nav navbar-right navbar-btn">
+   <ul class="nav navbar-nav navbar-right">
+     <li ng-if="authentication.isAuthenticated()" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown">Name
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="text-center"><a  ui-sref="profile">Profile</a></li>
+          <li class="text-center"><a  href="#" ng-click="logout()">Logout</a></li>
+        </ul>
+      </li>
+     <li ng-if="!authentication.isAuthenticated()"><a ui-sref="signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+     <li ng-if="!authentication.isAuthenticated()"><a ui-sref="login" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+   </ul>
+ </div>
+ </div>
+ </div>
+</nav>
+
+
     <!-- content -->
     <div class="container">
         <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT -->

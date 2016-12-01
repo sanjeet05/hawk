@@ -9,7 +9,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     function($rootScope, $state, $stateParams, $auth) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-
+        console.log($auth.getPayload);
         // for login/logout
         $rootScope.authentication=$auth;
         $rootScope.logout=function () {
@@ -48,6 +48,14 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
             },
             controller: 'SignupCtrl'
         })
+        .state('profile', {
+            url: "/profile",
+            templateUrl: "client/templates/profile.html",
+            // data: {
+            //     pageTitle: 'Profile'
+            // },
+            // controller: 'ProfileCtrl'
+        })
 
     // if you have menu then routes like that
     // .state('app', {
@@ -71,6 +79,6 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     // route the JWT should be retrieved from
     $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/login');
 
 });
