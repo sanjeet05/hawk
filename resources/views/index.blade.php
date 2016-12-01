@@ -12,9 +12,6 @@
     <link href="client/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="client/css/style.css" rel="stylesheet">
     <link href="client/lib/intl-tel-input/build/css/intlTelInput.css" rel="stylesheet">
-
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="client/lib/jquery-3.1.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
