@@ -7,9 +7,9 @@ use App\Http\Requests;
 class AdminHomeController extends ApiController
 {
     //
-    public function getAllUsers(Request $request)
+    public function getAllUsers()
     {
-
-      return response()->json(['result' => "all users"]);
+      $all_users = $this->getUsers();
+      return response()->json(['result' => $all_users]);
     }
 }

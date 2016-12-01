@@ -9,22 +9,41 @@ use App\Http\Requests;
 use App\User;
 use Hash;
 use JWTAuth;
+use Validator;
 
 class LoginController extends ApiController
 {
   public function signup(Request $request)
     {
-      // call to getUserIdByEmail function to user is exits or not
-      $id = $this->getUserIdByEmail($request->get('email'));
-      if(!$id){
-        $input = $request->all();
-        $input['password'] = Hash::make($input['password']);
-        User::create($input);
-          return response()->json(['result'=>true]);
-      }
-      else{
-        return response()->json(['result'=>false]);
-      }
+      $user_data = $request->all();
+      // create the validation rules ------------------------
+      $rules = array(
+          'name' => 'required',
+          'email'=> 'required',
+          'mobile' => 'required',
+          'password' => 'required',
+      );
+      // validate against the inputs from our form
+      $validator = Validator::make($user_data, $rules);
+      if ($validator->fails()) {
+            // get the error messages from the validator
+            $messages = $validator->messages();
+            // redirect our user back to the form with the errors from the validator
+            return response()->json(['result'=>$messages]);
+        }
+        else{
+            // call to getUserIdByEmail function to user is exits or not
+            $id = $this->getUserIdByEmail($request->get('email'));
+            if(!$id){
+              $input = $request->all();
+              $input['password'] = Hash::make($input['password']);
+              User::create($input);
+                return response()->json(['result'=>true]);
+            }
+            else{
+              return response()->json(['result'=>false]);
+            }
+        }
 
     }
 
