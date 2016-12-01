@@ -16,7 +16,7 @@
     <script src="client/lib/jquery-3.1.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="client/lib/bootstrap/js/bootstrap.min.js"></script>
-   <script src="client/lib/jquery/dist/jqueryjs"></script>
+   <!-- <script src="client/lib/jquery/dist/jquery.js"></script> -->
     <script src="client/lib/angular.min.js"></script>
     <script src="client/lib/angular-ui-router.min.js"></script>
     <script src="client/lib/ngStorage.min.js"></script>

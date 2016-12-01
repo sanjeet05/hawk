@@ -15,7 +15,7 @@ class LoginController extends ApiController
   public function signup(Request $request)
     {
       // call to getUserIdByEmail function to user is exits or not
-      $id = $this->getUserIdByEmail($request->get('email'));      
+      $id = $this->getUserIdByEmail($request->get('email'));
       if(!$id){
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -45,7 +45,7 @@ class LoginController extends ApiController
             // if no errors are encountered we can return a JWT
             // return response()->json(compact('token'));
             $user_name = $this->getUserNameByEmail($request->get('email'));
-            return response()->json(['token' => $token, '$user_name'=>$user_name]);
+            return response()->json(['token' => $token, 'user_name'=>$user_name]);
 
       // $input = $request->all();
       //
