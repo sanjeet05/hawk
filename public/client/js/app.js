@@ -10,6 +10,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         console.log($auth.getPayload);
+          $rootScope.LogedInUserName = localStorage.getItem("userName");
         // for login/logout
         $rootScope.authentication=$auth;
         $rootScope.logout=function () {

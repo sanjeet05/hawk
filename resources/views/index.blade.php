@@ -61,7 +61,7 @@
        <div class="row nav navbar-right navbar-btn">
    <ul class="nav navbar-nav navbar-right">
      <li ng-if="authentication.isAuthenticated()" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown">Name
+        <a class="dropdown-toggle" data-toggle="dropdown">Loged In User Name
         <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li class="text-center"><a  ui-sref="profile">Profile</a></li>

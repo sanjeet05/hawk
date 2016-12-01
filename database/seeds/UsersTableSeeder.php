@@ -16,14 +16,14 @@ class UsersTableSeeder extends Seeder
         [
           'name' => 'Admin',
           'email' => 'admin@hawk.com',
-          'mobile'=>'9445165233',
+          'mobile'=>'+919445165233',
           'password' => bcrypt('admin'),
           'roleId'=>'1',
         ],
         [
           'name' => 'User',
           'email' => 'user@hawk.com',
-          'mobile'=>'9445165233',
+          'mobile'=>'+919445165233',
           'password' => bcrypt('user'),
           'roleId'=>'0',
         ]

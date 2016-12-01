@@ -1,5 +1,7 @@
-<section class="" ng-init="initAdmin()">
-  <div><h2 class="page-header">Users</h2></div>
+<div class="" ng-init="initAdmin()">
+  <div class="page-header">
+    <h3>Users</h3>
+  </div>
   <div class="table table-responsive upper-line table-inverse">
 <table class="table table-hover">
   <thead>
@@ -12,10 +14,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>John</td>
-      <td>Doe</td>
-      <td>john@example.com</td>
+    <tr ng-repeat="user in users">
+      <td>{{user.name}}</td>
+      <td>{{user.mobile}}</td>
+      <td>{{user.email}}</td>
       <td><button class="btn btn-sm btn-info">Edit</button></td>
       <td><button class="btn btn-sm btn-danger">Delete</button></td>
     </tr>
@@ -23,4 +25,4 @@
   </tbody>
 </table>
 </div>
-</section>
+</div>

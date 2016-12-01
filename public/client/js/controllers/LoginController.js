@@ -33,6 +33,7 @@ angular.module('LoginController', [])
                 // $auth.setToken(response.data.result)
                 localStorage.setItem("userName", response.data.user_name);
                 localStorage.setItem("userRole", response.data.user_role);
+                $rootScope.LogedInUserName=response.data.user_name;
                 if(response.data.user_role === 'admin') {
                   $state.go('adminHome');
                 }

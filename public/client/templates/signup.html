@@ -23,7 +23,8 @@
 
 
         <div class=" form-group" show-errors>
-          <label for="mobile">Mobile</label>
+          <label for="mobile">Mobile</label><br>
+
           <input ng-intl-tel-input  data-initial-country="in" type="tel" id="mobile" name="mobile" class="form-control" ng-model="credentials.mobile"  required>
           <div ng-messages="userForm.mobile.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Mobile no is required.</p>
