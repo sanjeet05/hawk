@@ -26,6 +26,8 @@ class ArtisanCommands extends Controller
      php artisan make:seeder seeder_name
      php artisan make:seeder UsersTableSeeder
      php artisan db:seed
-
+     @if you are getting [ReflectionException] Class UsersTableSeeder does not exist error.then,
+     composer dump-autoload
+     php artisan db:seed   
     */
 }

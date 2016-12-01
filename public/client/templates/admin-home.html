@@ -1,7 +1,26 @@
-<section ng-init="initAdmin()">
-    <div class="row">
-      <div class="page-header"> Adnim </div>
-      <button type="button" class="btn btn-primary" ng-click="info()">info</button>
+<section class="" ng-init="initAdmin()">
+  <div><h2 class="page-header">Users</h2></div>
+  <div class="table table-responsive upper-line table-inverse">
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th class="width_30">Name</th>
+      <th class="width_30">Mobile</th>
+      <th class="width_30">Email</th>
+      <th class="width_5">&nbsp;</th>
+      <th class="width_5">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John</td>
+      <td>Doe</td>
+      <td>john@example.com</td>
+      <td><button class="btn btn-sm btn-info">Edit</button></td>
+      <td><button class="btn btn-sm btn-danger">Delete</button></td>
+    </tr>
 
-    </div>
+  </tbody>
+</table>
+</div>
 </section>
