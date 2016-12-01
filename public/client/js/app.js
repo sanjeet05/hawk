@@ -51,7 +51,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
             //     pageTitle: 'Profile'
             // },
             // controller: 'ProfileCtrl'
-
+          })
         .state('home', {
             url: "/home",
             templateUrl: "client/templates/home.html",
