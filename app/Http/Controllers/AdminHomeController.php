@@ -9,7 +9,7 @@ class AdminHomeController extends ApiController
     //
     public function getAllUsers()
     {
-      $all_users = $this->getUsers();
-      return response()->json(['result' => $all_users]);
+      $allUsers = $this->getUsers();
+      return response()->json(['result' => $allUsers]);
     }
 }

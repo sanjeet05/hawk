@@ -33,4 +33,9 @@ class DatabaseSaverController extends Controller
       $users = DB::table('users')->select('name', 'email','mobile')->where('roleId', '0')->get();
       return $users;
   }
+  public function getUserDetailsByEmail($email)
+  {
+    $users = DB::table('users')->select('name', 'email','mobile','password')->where('email', $email)->get();
+    return $users;
+  }
 }

@@ -32,14 +32,14 @@ Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
 // need to have token for user route
 Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
-    	Route::get('get_user_details', 'LoginController@get_user_details');
+    	Route::get('getUserDetails', 'UserHomeController@getUserDetails');
     });
 });
 
 // need to have token for admin route
 Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
-    	Route::get('get_all_users', 'AdminHomeController@getAllUsers');
+    	Route::get('getAllUsers', 'AdminHomeController@getAllUsers');
     });
 });
 // Route::get('/login', 'LoginController@index');
