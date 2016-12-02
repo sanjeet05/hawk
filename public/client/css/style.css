@@ -57,3 +57,7 @@ body{
 .width_5{
 	width:5%
 }
+
+/* by sanjeet for hawk */
+.width_100{width:100% !important;}
+.intl-tel-input{width:100% !important;}
