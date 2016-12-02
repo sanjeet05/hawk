@@ -16,7 +16,9 @@ angular.module('AdminController', [])
         );
   };
   $scope.edit=function (email) {
-    $http.get('http://localhost:8000/api/v1/getUserDetails', {'email':email})
+    data={'email':email}
+    // $http.get('http://localhost:8000/api/v1/getUserDetails?email='+email)
+    $http.get('http://localhost:8000/api/v1/getUserDetails', {params:data})
         .then(
             function(response) {
                 console.log(response.data.result);

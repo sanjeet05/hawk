@@ -30,16 +30,19 @@ Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
 });
 
 // need to have token for user route
-Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
+Route::group(['middleware' => 'cors', 'prefix' => 'api/v1/user'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
     	Route::get('getUserDetails', 'UserHomeController@getUserDetails');
+      Route::post('editProfile', 'UserHomeController@editProfile');
     });
 });
 
 // need to have token for admin route
-Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
+Route::group(['middleware' => 'cors', 'prefix' => 'api/v1/admin'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
     	Route::get('getAllUsers', 'AdminHomeController@getAllUsers');
+      Route::post('editUser', 'AdminHomeController@editUser');
+      Route::post('deleteUser', 'AdminHomeController@deleteUser');
     });
 });
 // Route::get('/login', 'LoginController@index');
