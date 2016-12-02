@@ -62,7 +62,7 @@ angular.module('LoginController', [])
           return false;
         }
         // console.log($scope.credentials);
-        $http.post('http://localhost:8000/api/v1/signup', $scope.credentials)
+        $http.post('/api/v1/signup', $scope.credentials)
             .then(
                 function(response) {
                     console.log(response);

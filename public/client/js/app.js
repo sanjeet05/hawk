@@ -1,7 +1,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput'])
+angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'ngResource', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput', 'UserService'])
 
 
 // for title
@@ -91,7 +91,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
+    $authProvider.loginUrl = '/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

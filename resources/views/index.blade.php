@@ -20,6 +20,7 @@
     <script src="client/lib/angular.min.js"></script>
     <script src="client/lib/angular-ui-router.min.js"></script>
     <script src="client/lib/ngStorage.min.js"></script>
+    <script src="client/lib/angular-resource.js"></script>
     <script src="client/lib/satellizer.min.js"></script>
 
     <script src="client/lib/ui-bootstrap-2.0.1.js"></script>
@@ -30,6 +31,7 @@
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
     <script src="client/js/controllers/AdminController.js"></script>
+    <script src="client/js/services/userService.js"></script>
 
     <script src="client/lib/intl-tel-input/build/js/utils.js"></script>
     <script src="client/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
