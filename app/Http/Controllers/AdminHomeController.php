@@ -12,4 +12,12 @@ class AdminHomeController extends ApiController
       $allUsers = $this->getUsers();
       return response()->json(['result' => $allUsers]);
     }
+    public function editUser()
+    {
+      return response()->json(['result' => 'edit']);
+    }
+    public function deleteUser()
+    {
+      return response()->json(['result' => 'delete']);
+    }
 }
