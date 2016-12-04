@@ -9,8 +9,8 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     function($rootScope, $state, $stateParams, $auth) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        console.log($auth.getPayload);
-          $rootScope.LogedInUserName = localStorage.getItem("userName");
+          $rootScope.userName = localStorage.getItem("userName");
+          $rootScope.userRole = localStorage.getItem("userRole");
         // for login/logout
         $rootScope.authentication=$auth;
         $rootScope.logout=function () {
@@ -18,6 +18,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
           $auth.logout().then(function () {
             localStorage.removeItem("userName");
             localStorage.removeItem("userRole");
+            localStorage.removeItem("userEmail");
             $state.go('login');
           });
         };
@@ -44,15 +45,6 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
             },
             controller: 'SignupCtrl'
         })
-
-        .state('profile', {
-            url: "/profile",
-            templateUrl: "client/templates/profile.html",
-            // data: {
-            //     pageTitle: 'Profile'
-            // },
-            // controller: 'ProfileCtrl'
-          })
         .state('home', {
             url: "/home",
             templateUrl: "client/templates/home.html",
@@ -64,6 +56,24 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         .state('adminHome', {
             url: "/adminHome",
             templateUrl: "client/templates/admin-home.html",
+            data: {
+                pageTitle: 'Admin Home'
+            },
+            controller: 'AdminHomeCtrl'
+
+        })
+        .state('editProfile', {
+            url: "/editProfile/:userId",
+            templateUrl: "client/templates/edit-profile.html",
+            data: {
+                pageTitle: 'Admin Home'
+            },
+            controller: 'AdminHomeCtrl'
+
+        })
+        .state('changePassword', {
+            url: "/changePassword",
+            templateUrl: "client/templates/change-password.html",
             data: {
                 pageTitle: 'Admin Home'
             },
@@ -91,7 +101,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
 
     // Satellizer configuration that specifies which API
     // route the JWT should be retrieved from
-    $authProvider.loginUrl = 'http://localhost:8000/api/v1/authenticate/login';
+    $authProvider.loginUrl = '/api/v1/authenticate/login';
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 

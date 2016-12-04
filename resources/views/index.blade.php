@@ -54,17 +54,21 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand" href="#">Hawk</a>
+     <a ng-if="userRole == 'user' " class="navbar-brand glyphicon glyphicon-home" ui-sref="home"></a>
+     <a ng-if="userRole == 'admin' " class="navbar-brand glyphicon glyphicon-home" ui-sref="adminHome"></a>
    </div>
 
    <div class="collapse navbar-collapse ">
        <div class="row nav navbar-right navbar-btn">
    <ul class="nav navbar-nav navbar-right">
      <li ng-if="authentication.isAuthenticated()" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown">Loged In User Name
-        <span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown">
+        <div class="pull-left"ng-bind="userName"></div>
+        <span class="caret"></span>
+    </a>
         <ul class="dropdown-menu">
-          <li class="text-center"><a  ui-sref="profile">Profile</a></li>
+          <li ng-if="userRole == 'user' " class="text-center"><a  ui-sref="editProfile">Edit Profile</a></li>
+          <li class="text-center"><a  ui-sref="changePassword">Change Password</a></li>
           <li class="text-center"><a  href="#" ng-click="logout()">Logout</a></li>
         </ul>
       </li>

@@ -30,10 +30,13 @@ angular.module('LoginController', [])
                 // console.log("wrong email or password.");
               }
               else{
-                // $auth.setToken(response.data.result)
+                $rootScope.userName=response.data.user_name;
+                $rootScope.userRole=response.data.user_role;
+                // $auth.setToken(response.data.result
                 localStorage.setItem("userName", response.data.user_name);
                 localStorage.setItem("userRole", response.data.user_role);
-                $rootScope.LogedInUserName=response.data.user_name;
+                localStorage.setItem("userEmail", response.data.email);
+                // $rootScope.LogedInUserName=response.data.user_name;
                 if(response.data.user_role === 'admin') {
                   $state.go('adminHome');
                 }
@@ -62,7 +65,7 @@ angular.module('LoginController', [])
           return false;
         }
         // console.log($scope.credentials);
-        $http.post('http://localhost:8000/api/v1/signup', $scope.credentials)
+        $http.post('/api/v1/signup', $scope.credentials)
             .then(
                 function(response) {
                     console.log(response);

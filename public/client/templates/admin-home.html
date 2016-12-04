@@ -18,8 +18,8 @@
       <td>{{user.name}}</td>
       <td>{{user.mobile}}</td>
       <td>{{user.email}}</td>
-      <td><button class="btn btn-sm btn-info" ng-click="edit(user.email)">Edit</button></td>
-      <td><button class="btn btn-sm btn-danger">Delete</button></td>
+      <td><button class="btn btn-sm btn-info" ui-sref="editProfile({userId:user.email})">Edit</button></td>
+      <td><button class="btn btn-sm btn-danger" ng-click="delete(user.email)">Delete</button></td>
     </tr>
 
   </tbody>
