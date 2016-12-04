@@ -42,14 +42,12 @@ class AdminHomeController extends ApiController
         }
         return response()->json(['error' => 'database error!'], 400);
       }
-
-      return response()->json(['result' => 'edit']);
     }
     public function deleteUser(Request $request)
     {
       if($request->has('email')){
         $id = $this->getUserIdByEmail($request->get('email'));
-        if(!$id){
+        if($id){
           $deleteUser=$this->deleteUserByEmail($id);
           if($deleteUser){
             return response()->json(['result' => 'user has been deleted!']);
@@ -61,7 +59,7 @@ class AdminHomeController extends ApiController
         }
       }
       else{
-        return response()->json(['error' => 'please provide email!'], 400);
+        return response()->json(['error' => 'please provide your email!'], 400);
       }
 
     }
