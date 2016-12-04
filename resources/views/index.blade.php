@@ -20,7 +20,6 @@
     <script src="client/lib/angular.min.js"></script>
     <script src="client/lib/angular-ui-router.min.js"></script>
     <script src="client/lib/ngStorage.min.js"></script>
-    <script src="client/lib/angular-resource.js"></script>
     <script src="client/lib/satellizer.min.js"></script>
 
     <script src="client/lib/ui-bootstrap-2.0.1.js"></script>
@@ -31,7 +30,6 @@
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
     <script src="client/js/controllers/AdminController.js"></script>
-    <script src="client/js/services/userService.js"></script>
 
     <script src="client/lib/intl-tel-input/build/js/utils.js"></script>
     <script src="client/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>
@@ -56,17 +54,21 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
      </button>
-     <a class="navbar-brand" href="#">Hawk</a>
+     <a ng-if="userRole == 'user' " class="navbar-brand" ui-sref="home">Home</a>
+     <a ng-if="userRole == 'admin' " class="navbar-brand" ui-sref="adminHome">Home</a>
    </div>
 
    <div class="collapse navbar-collapse ">
        <div class="row nav navbar-right navbar-btn">
    <ul class="nav navbar-nav navbar-right">
      <li ng-if="authentication.isAuthenticated()" class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown">Loged In User Name
-        <span class="caret"></span></a>
+        <a class="dropdown-toggle" data-toggle="dropdown">
+        <div class="pull-left"ng-bind="userName"></div>
+        <span class="caret"></span>
+    </a>
         <ul class="dropdown-menu">
-          <li class="text-center"><a  ui-sref="profile">Profile</a></li>
+          <li class="text-center"><a  ui-sref="editProfile{userId:email}">Edit Profile</a></li>
+          <li class="text-center"><a  ui-sref="changePassword">Change Password</a></li>
           <li class="text-center"><a  href="#" ng-click="logout()">Logout</a></li>
         </ul>
       </li>

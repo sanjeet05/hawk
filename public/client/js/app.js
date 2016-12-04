@@ -1,7 +1,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'ngResource', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput', 'UserService'])
+angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput'])
 
 
 // for title
@@ -10,7 +10,8 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
         console.log($auth.getPayload);
-          $rootScope.LogedInUserName = localStorage.getItem("userName");
+          $rootScope.userName = localStorage.getItem("userName");
+          $rootScope.userRole = localStorage.getItem("userRole");
         // for login/logout
         $rootScope.authentication=$auth;
         $rootScope.logout=function () {
@@ -44,15 +45,6 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
             },
             controller: 'SignupCtrl'
         })
-
-        .state('profile', {
-            url: "/profile",
-            templateUrl: "client/templates/profile.html",
-            // data: {
-            //     pageTitle: 'Profile'
-            // },
-            // controller: 'ProfileCtrl'
-          })
         .state('home', {
             url: "/home",
             templateUrl: "client/templates/home.html",
@@ -64,6 +56,15 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         .state('adminHome', {
             url: "/adminHome",
             templateUrl: "client/templates/admin-home.html",
+            data: {
+                pageTitle: 'Admin Home'
+            },
+            controller: 'AdminHomeCtrl'
+
+        })
+        .state('editProfile', {
+            url: "/editProfile/:userId",
+            templateUrl: "client/templates/edit-profile.html",
             data: {
                 pageTitle: 'Admin Home'
             },
