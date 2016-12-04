@@ -31,9 +31,13 @@ angular.module('AdminController', [])
             }
         );
   };
-  $scope.update=function (credentials) {
-    console.log(credentials);
-    $http.post('/api/v1/admin/updateUser', credentials)
+  $scope.update=function (isValid) {
+    $scope.errorText = null;
+    if (!isValid) {
+      $scope.$broadcast('show-errors-check-validity', 'userForm');
+      return false;
+    }
+    $http.post('/api/v1/admin/updateUser', $scope.credentials)
         .then(
             function(response) {
                 console.log(response.data.result);
