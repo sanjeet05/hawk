@@ -30,6 +30,7 @@
     <script src="client/js/controllers/controllers.js"></script>
     <script src="client/js/controllers/LoginController.js"></script>
     <script src="client/js/controllers/AdminController.js"></script>
+    <script src="client/js/controllers/ProfileCtrl.js"></script>
 
     <script src="client/lib/intl-tel-input/build/js/utils.js"></script>
     <script src="client/lib/intl-tel-input/build/js/intlTelInput.min.js"></script>

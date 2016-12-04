@@ -15,14 +15,11 @@ angular.module('AdminController', [])
             }
         );
   };
-  $scope.initEditProfile=function () {
-    // var userEmail=localStorage.getItem("userEmail");
-    data={'email':$stateParams.userId}
-    // $http.get('http://localhost:8000/api/v1/getUserDetails?email='+email)
+  $scope.initEditUser=function () {
+    var data={'email':$stateParams.userId}
     $http.get('/api/v1/user/getUserDetails', {params:data})
         .then(
             function(response) {
-                console.log(response.data.result);
                 $scope.credentials = response.data.result[0];
             },
             function(error) {
@@ -31,12 +28,15 @@ angular.module('AdminController', [])
             }
         );
   };
-  $scope.update=function (credentials) {
-    console.log(credentials);
-    $http.post('/api/v1/admin/updateUser', credentials)
+  $scope.update=function (isValid) {
+    $scope.errorText = null;
+    if (!isValid) {
+      $scope.$broadcast('show-errors-check-validity', 'userForm');
+      return false;
+    }
+    $http.post('/api/v1/admin/updateUser', $scope.credentials)
         .then(
             function(response) {
-                console.log(response.data.result);
 
             },
             function(error) {
@@ -50,8 +50,8 @@ angular.module('AdminController', [])
     $http.post('/api/v1/admin/deleteUser', {'email':userEmail})
         .then(
             function(response) {
-                console.log(response.data.result);
-
+              alert(response.result[0]);
+              $scope.initAdmin();
             },
             function(error) {
               $scope.errorText=error.data.error;

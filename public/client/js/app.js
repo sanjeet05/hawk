@@ -1,7 +1,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput'])
+angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors' ,'ngMessages', 'ngStorage', 'LoginController', 'AdminController', 'controllers', 'satellizer',  'internationalPhoneNumber', 'ngIntlTelInput', 'ProfileCtrl'])
 
 
 // for title
@@ -11,6 +11,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         $rootScope.$stateParams = $stateParams;
           $rootScope.userName = localStorage.getItem("userName");
           $rootScope.userRole = localStorage.getItem("userRole");
+          // $rootScope.userEmail = localStorage.getItem("userEmail");
         // for login/logout
         $rootScope.authentication=$auth;
         $rootScope.logout=function () {
@@ -63,21 +64,21 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
 
         })
         .state('editProfile', {
-            url: "/editProfile/:userId",
+            url: "/editProfile",
             templateUrl: "client/templates/edit-profile.html",
-            data: {
-                pageTitle: 'Admin Home'
-            },
+            controller: 'ProfileCtrl'
+
+        })
+        .state('editUser', {
+            url: "/editUser/:userId",
+            templateUrl: "client/templates/edit-user.html",
             controller: 'AdminHomeCtrl'
 
         })
         .state('changePassword', {
             url: "/changePassword",
             templateUrl: "client/templates/change-password.html",
-            data: {
-                pageTitle: 'Admin Home'
-            },
-            controller: 'AdminHomeCtrl'
+            controller: 'ProfileCtrl'
 
         })
 
