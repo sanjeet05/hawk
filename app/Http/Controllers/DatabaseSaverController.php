@@ -50,4 +50,10 @@ class DatabaseSaverController extends Controller
     $user = DB::table('users')->where('email','=', $email)->update($data);
     return $user;
   }
+  // change password
+  public function changePasswordByEmail($email, $data)
+  {
+    $user = DB::table('users')->where('email','=', $email)->update($data);
+    return $user;
+  }
 }

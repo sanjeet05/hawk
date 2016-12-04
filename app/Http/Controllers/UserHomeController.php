@@ -9,18 +9,20 @@ use Validator;
 
 class UserHomeController extends ApiController
 {
+    // get user info
     public function getUserDetails(Request $request)
     {
-
-      if($request->has('email')){
-        $email=$request->input('email');
-        $userInfo=$this->getUserDetailsByEmail($email);
-        return response()->json(['result'=>$userInfo]);
-      }
-      else{
-        return response()->json(['error'=>"please provide your email!"], 400);
-      }
+        if($request->has('email')){
+          $email=$request->input('email');
+          $userInfo=$this->getUserDetailsByEmail($email);
+          return response()->json(['result'=>$userInfo]);
+        }
+        else{
+          return response()->json(['error'=>"please provide your email!"], 400);
+        }
     }
+
+    // update user profile
     public function updateProfile(Request $request)
     {
       $userData = $request->all();
@@ -47,8 +49,36 @@ class UserHomeController extends ApiController
         if($updateUser){
           return response()->json(['result' => 'profile has been updated']);
         }
-        return response()->json(['error' => 'database error!'], 400);
+        return response()->json(['result' => 'did not chanage anythings!']);
       }
 
+    }
+
+    // change user password
+    public function changePassword(Request $request)
+    {
+      if($request->has('email')){
+        if($request->has('password')){
+          $email = $this->getUserIdByEmail($request->get('email'));
+          if($email){
+            $password = bcrypt($request->get('password'));
+            $data = ['password': $password];
+            $changePassword= $this->changePasswordByEmail($email, $data);
+            if($changePassword){
+              return response()->json(['result' => 'password has been changed']);
+            }
+            return response()->json(['result' => 'did not chnange password']);
+          }
+          else{
+            return response()->json(['error' => 'user does not exit!'], 400);
+          }
+        }
+        else{
+          return response()->json(['error' => 'please provide your password!'], 400);
+        }
+      }
+      else{
+        return response()->json(['error' => 'please provide your email!'], 400);
+      }
     }
 }
