@@ -33,7 +33,7 @@ Route::group(['middleware' => 'cors', 'prefix' => 'api/v1'], function () {
 Route::group(['middleware' => 'cors', 'prefix' => 'api/v1/user'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
     	Route::get('getUserDetails', 'UserHomeController@getUserDetails');
-      Route::post('editProfile', 'UserHomeController@editProfile');
+      Route::post('updateProfile', 'UserHomeController@updateProfile');
     });
 });
 
@@ -41,7 +41,7 @@ Route::group(['middleware' => 'cors', 'prefix' => 'api/v1/user'], function () {
 Route::group(['middleware' => 'cors', 'prefix' => 'api/v1/admin'], function () {
     Route::group(['middleware' => 'jwt-auth'], function () {
     	Route::get('getAllUsers', 'AdminHomeController@getAllUsers');
-      Route::post('editUser', 'AdminHomeController@editUser');
+      Route::post('updateUser', 'AdminHomeController@updateUser');
       Route::post('deleteUser', 'AdminHomeController@deleteUser');
     });
 });

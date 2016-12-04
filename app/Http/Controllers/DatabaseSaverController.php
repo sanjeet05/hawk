@@ -38,4 +38,16 @@ class DatabaseSaverController extends Controller
     $users = DB::table('users')->select('name', 'email','mobile')->where('email', $email)->get();
     return $users;
   }
+  // delete user
+  public function deleteUserByEmail($email)
+  {
+    $user = DB::table('users')->where('email','=', $email)->delete();
+    return $user;
+  }
+  // update user
+  public function updateUserByEmail($email, $data)
+  {
+    $user = DB::table('users')->where('email','=', $email)->update($data);
+    return $user;
+  }
 }

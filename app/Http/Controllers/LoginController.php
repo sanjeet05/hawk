@@ -65,12 +65,13 @@ class LoginController extends ApiController
             // return response()->json(compact('token'));
             $user_name = $this->getUserNameByEmail($request->get('email'));
             $user_role = $this->getUserRoleByEmail($request->get('email'));
+            $email=$request->get('email');
             if($user_role == 1) {
-              return response()->json(['token' => $token, 'user_name'=>$user_name, 'user_role'=>'admin']);
+              return response()->json(['token' => $token, 'user_name'=>$user_name, 'email'=>$email, 'user_role'=>'admin']);
             }
             else
             {
-              return response()->json(['token' => $token, 'user_name'=>$user_name, 'user_role'=>'user']);
+              return response()->json(['token' => $token, 'user_name'=>$user_name, 'email'=>$email, 'user_role'=>'user']);
             }
 
     }

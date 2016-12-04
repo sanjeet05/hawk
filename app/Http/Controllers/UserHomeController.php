@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 
+// by sanjeet
+use Validator;
+
 class UserHomeController extends ApiController
 {
     public function getUserDetails(Request $request)
@@ -18,8 +21,26 @@ class UserHomeController extends ApiController
         return response()->json(['result'=>"please provide email!"], 400);
       }
     }
-    public function editProfile()
+    public function updateProfile(Request $request)
     {
-      return response()->json(['result' => 'editProfile']);
+      $userData = $request->all();
+      // create the validation rules
+      $rules = array(
+          'name' => 'required',
+          'email'=> 'required',
+          'mobile' => 'required',
+      );
+      // validate against the inputs from our form
+      $validator = Validator::make($userData, $rules);
+      if ($validator->fails()) {
+            // get the error messages from the validator
+            $messages = $validator->messages();
+            // redirect our user back to the form with the errors from the validator
+            return response()->json(['result'=>$messages]);
+        }
+      else{
+        return response()->json(['result' => 'updateProfile']);
+      }
+
     }
 }
