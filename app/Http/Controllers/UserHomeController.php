@@ -18,7 +18,7 @@ class UserHomeController extends ApiController
         return response()->json(['result'=>$userInfo]);
       }
       else{
-        return response()->json(['result'=>"please provide email!"], 400);
+        return response()->json(['error'=>"please provide your email!"], 400);
       }
     }
     public function updateProfile(Request $request)
@@ -39,7 +39,15 @@ class UserHomeController extends ApiController
             return response()->json(['result'=>$messages]);
         }
       else{
-        return response()->json(['result' => 'updateProfile']);
+        $email = $request->get('email');
+        $name = $request->get('name');
+        $mobile= $request->get('mobile');
+        $data = ['name' => $name, 'mobile'=>$mobile];
+        $updateUser= $this->updateUserByEmail($email, $data);
+        if($updateUser){
+          return response()->json(['result' => 'profile has been updated']);
+        }
+        return response()->json(['error' => 'database error!'], 400);
       }
 
     }
