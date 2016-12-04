@@ -54,8 +54,8 @@
          <span class="icon-bar"></span>
          <span class="icon-bar"></span>
      </button>
-     <a ng-if="userRole == 'user' " class="navbar-brand" ui-sref="home">Home</a>
-     <a ng-if="userRole == 'admin' " class="navbar-brand" ui-sref="adminHome">Home</a>
+     <a ng-if="userRole == 'user' " class="navbar-brand glyphicon glyphicon-home" ui-sref="home"></a>
+     <a ng-if="userRole == 'admin' " class="navbar-brand glyphicon glyphicon-home" ui-sref="adminHome"></a>
    </div>
 
    <div class="collapse navbar-collapse ">
