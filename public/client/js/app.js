@@ -9,7 +9,6 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
     function($rootScope, $state, $stateParams, $auth) {
         $rootScope.$state = $state;
         $rootScope.$stateParams = $stateParams;
-        console.log($auth.getPayload);
           $rootScope.userName = localStorage.getItem("userName");
           $rootScope.userRole = localStorage.getItem("userRole");
         // for login/logout
@@ -19,6 +18,7 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
           $auth.logout().then(function () {
             localStorage.removeItem("userName");
             localStorage.removeItem("userRole");
+            localStorage.removeItem("userEmail");
             $state.go('login');
           });
         };
@@ -65,6 +65,15 @@ angular.module('starter', ['ui.router', 'ui.bootstrap', 'ui.bootstrap.showErrors
         .state('editProfile', {
             url: "/editProfile/:userId",
             templateUrl: "client/templates/edit-profile.html",
+            data: {
+                pageTitle: 'Admin Home'
+            },
+            controller: 'AdminHomeCtrl'
+
+        })
+        .state('changePassword', {
+            url: "/changePassword",
+            templateUrl: "client/templates/change-password.html",
             data: {
                 pageTitle: 'Admin Home'
             },

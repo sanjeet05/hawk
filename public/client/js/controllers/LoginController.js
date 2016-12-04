@@ -32,15 +32,10 @@ angular.module('LoginController', [])
               else{
                 $rootScope.userName=response.data.user_name;
                 $rootScope.userRole=response.data.user_role;
-                // $auth.setToken(response.data.result)
-                // $rootScope.logedInUser={
-                //   "userName": response.data.user_name,
-                //   "userRole": response.data.user_role,
-                //   "email": "santu@gmail.com"
-                // }
-                // localStorage.setItem("logedInUser", $rootScope.logedInUser);
+                // $auth.setToken(response.data.result
                 localStorage.setItem("userName", response.data.user_name);
                 localStorage.setItem("userRole", response.data.user_role);
+                localStorage.setItem("userEmail", response.data.email);
                 // $rootScope.LogedInUserName=response.data.user_name;
                 if(response.data.user_role === 'admin') {
                   $state.go('adminHome');

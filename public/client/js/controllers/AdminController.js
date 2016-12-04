@@ -16,6 +16,7 @@ angular.module('AdminController', [])
         );
   };
   $scope.initEditProfile=function () {
+    // var userEmail=localStorage.getItem("userEmail");
     data={'email':$stateParams.userId}
     // $http.get('http://localhost:8000/api/v1/getUserDetails?email='+email)
     $http.get('/api/v1/user/getUserDetails', {params:data})
@@ -32,7 +33,31 @@ angular.module('AdminController', [])
   };
   $scope.update=function (credentials) {
     console.log(credentials);
-  };
+    $http.post('/api/v1/admin/updateUser', credentials)
+        .then(
+            function(response) {
+                console.log(response.data.result);
 
+            },
+            function(error) {
+              $scope.errorText=error.data.error;
+                console.log(error);
+            }
+        );
+  };
+  $scope.delete=function (userEmail) {
+    console.log(userEmail);
+    $http.post('/api/v1/admin/deleteUser', {'email':userEmail})
+        .then(
+            function(response) {
+                console.log(response.data.result);
+
+            },
+            function(error) {
+              $scope.errorText=error.data.error;
+                console.log(error);
+            }
+        );
+  };
 
 });

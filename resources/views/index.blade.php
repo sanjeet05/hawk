@@ -67,7 +67,7 @@
         <span class="caret"></span>
     </a>
         <ul class="dropdown-menu">
-          <li class="text-center"><a  ui-sref="editProfile{userId:email}">Edit Profile</a></li>
+          <li ng-if="userRole == 'user' " class="text-center"><a  ui-sref="editProfile">Edit Profile</a></li>
           <li class="text-center"><a  ui-sref="changePassword">Change Password</a></li>
           <li class="text-center"><a  href="#" ng-click="logout()">Logout</a></li>
         </ul>
